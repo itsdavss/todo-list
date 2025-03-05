@@ -8,13 +8,21 @@
 
 .header .logo {
     display: flex;
+    align-items: center;
     gap: 12px;
-    font-weight: 700;
-    font-size: 2.5rem;
+    width: 126px;
+    height: 48px;
+}
+
+.header .logo img {
+    width: 22px;
+    height: 36px;
 }
 
 .header .logo h1 {
     color: var(--blue);
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .header .logo span {
