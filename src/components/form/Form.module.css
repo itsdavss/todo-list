@@ -1,5 +1,7 @@
 .container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin: -27px auto;
   max-width: 736px;
@@ -36,4 +38,74 @@
 
 .form button:hover {
   background-color: var(--blue);
+}
+
+.tarefas {
+  width: 100%;
+  margin-top: 64px;
+}
+
+.tarefas .titulos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tarefas .titulos .titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tarefas .titulos .titulo h3 {
+  font-size: 0.9rem;
+} 
+
+.tarefas .titulos .titulo span {
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+  font-weight: 700;
+  width: 25px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40%;
+}
+
+.tarefas .titulos .titulo .criadas {
+  color: var(--blue);
+}
+
+.tarefas .titulos .titulo .concluidas {
+  color: var(--purple);
+}
+
+.itens {
+  margin-top: 24px;
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itens .conteudo {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.itens .mensagem {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.itens .mensagem {
+  color: var(--gray-300);
+}
+
+.itens .mensagem h4:last-child{
+  font-weight: 400;
 }
