@@ -82,15 +82,16 @@
 
 .itens {
   margin-top: 24px;
-  border-top: 1px solid var(--gray-400);
-  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .itens .conteudo {
-  margin-top: 64px;
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+  width: 100%;
+  padding: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,4 +109,28 @@
 
 .itens .mensagem h4:last-child{
   font-weight: 400;
+}
+
+.lista {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lista li {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--gray-500);
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px 27px;
+  margin-bottom: 12px;
+}
+
+.lista li p {
+  width: 80%;
+  text-align: start;
+  color: var(--gray-100);
 }
