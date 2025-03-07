@@ -1,27 +1,50 @@
 import { useState } from "react";
 import style from "./Form.module.css";
 import { PlusCircle, Notepad, Trash } from "phosphor-react";
+import { v4 as uuidv4 } from "uuid";
 
 function Form() {
-  // const [isChecked, setIsChecked] = useState();
+  const [newTask, setNewTask] = useState();
+  const [newText, setNewText] = useState("");
 
-  const tasks = [
+  const [tasks, setTasks] = useState([
     {
-      id: 1,
+      id: uuidv4(),
       name: "Estudar React",
       isDone: true,
     },
     {
-      id: 2,
+      id: uuidv4(),
       name: "Pular corda",
       isDone: false,
     },
-  ];
+  ]);
+
+  function handleCreateNewTask() {
+    event.preventDefault();
+    setTasks([...tasks, newTask]);
+    setNewText("");
+  }
+
+  function handleInput() {
+    setNewText(event.target.value);
+
+    setNewTask({
+      id: uuidv4(),
+      name: newText,
+      isDone: false,
+    });
+  }
 
   return (
     <main className={style.container}>
-      <form action="" className={style.form}>
-        <input type="text" placeholder="Adicione uma nova tarefa" />
+      <form onSubmit={handleCreateNewTask} className={style.form}>
+        <input
+          type="text"
+          placeholder="Adicione uma nova tarefa"
+          value={newText}
+          onChange={handleInput}
+        />
         <button type="submit">
           Criar
           <PlusCircle size={16} />
@@ -31,7 +54,7 @@ function Form() {
         <div className={style.titulos}>
           <div className={style.titulo}>
             <h3 className={style.criadas}>Tarefas Criadas</h3>
-            <span>0</span>
+            <span>{tasks.length}</span>
           </div>
           <div className={style.titulo}>
             <h3 className={style.concluidas}>Concluídas</h3>
@@ -52,11 +75,7 @@ function Form() {
               {tasks.map((task) => {
                 return (
                   <li key={task.id}>
-                    <input
-                      type="checkbox"
-                      checked={task.isDone ? true : false}
-                      // onChange={()=> {setIsChecked(!task.isDone)}}
-                    />
+                    <input type="checkbox" />
                     <p>{task.name}</p>
                     <Trash color="var(--gray-300)" />
                   </li>
