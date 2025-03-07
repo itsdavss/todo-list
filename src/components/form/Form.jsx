@@ -9,30 +9,43 @@ function Form() {
 
   const [tasks, setTasks] = useState([]);
 
-  function handleCreateNewTask() {
+  function handleCreateNewTask(event) {
     event.preventDefault();
     setTasks([...tasks, newTask]);
     setNewText("");
   }
 
-  function handleInput() {
+  function handleInput(event) {
     setNewText(event.target.value);
 
     setNewTask({
       id: uuidv4(),
-      name: newText,
+      name: event.target.value,
       isDone: false,
     });
   }
 
   function deleteTask(taskToDelete) {
-    console.log(taskToDelete);
     const tasksWithoutDeletedOne = tasks.filter((task) => {
       return task.id != taskToDelete;
     });
 
     setTasks(tasksWithoutDeletedOne);
   }
+
+  function checkTask(taskToCheck) {
+    const updatedCheckTasks = tasks.map((task) => {
+      if (task.id == taskToCheck) {
+        return { ...task, isDone: !task.isDone};
+      }
+      return task
+    });
+    setTasks(updatedCheckTasks);
+  }
+
+  const doneTasks = tasks.filter((task=> {
+    return task.isDone == true
+  }))
 
   return (
     <main className={style.container}>
@@ -42,6 +55,7 @@ function Form() {
           placeholder="Adicione uma nova tarefa"
           value={newText}
           onChange={handleInput}
+          required
         />
         <button type="submit">
           Criar
@@ -56,7 +70,13 @@ function Form() {
           </div>
           <div className={style.titulo}>
             <h3 className={style.concluidas}>Concluídas</h3>
-            <span>0</span>
+            <span>
+              {tasks.length <= 0 ? (
+                tasks.length
+              ) : (
+                `${doneTasks.length} de ${tasks.length}`
+              )}
+            </span>
           </div>
         </div>
         <div className={style.itens}>
@@ -73,7 +93,12 @@ function Form() {
               {tasks.map((task) => {
                 return (
                   <li key={task.id}>
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      onChange={() => {
+                        checkTask(task.id);
+                      }}
+                    />
                     <p>{task.name}</p>
                     <button
                       className={style.lixeira}

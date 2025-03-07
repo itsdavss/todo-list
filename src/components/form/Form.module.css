@@ -66,12 +66,13 @@
   color: var(--gray-200);
   font-weight: 700;
   font-size: 0.75rem;
-  width: 25px;
+  max-width: 100px;
+  padding: 10px;
   height: 19px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 40%;
+  border-radius: 70%;
 }
 
 .tarefas .titulos .titulo .criadas {
