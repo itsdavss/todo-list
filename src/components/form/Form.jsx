@@ -77,7 +77,9 @@ function Form() {
                   <li key={task.id}>
                     <input type="checkbox" />
                     <p>{task.name}</p>
-                    <Trash color="var(--gray-300)" />
+                    <button className={style.lixeira}>
+                      <Trash color="var(--gray-300)" />
+                    </button>
                   </li>
                 );
               })}

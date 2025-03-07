@@ -136,3 +136,8 @@
   text-align: start;
   color: var(--gray-100);
 }
+
+.lista li .lixeira:hover path,
+.lista li .lixeira:hover line{
+  stroke: var(--danger);
+}
