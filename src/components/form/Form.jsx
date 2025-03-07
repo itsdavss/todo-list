@@ -7,18 +7,7 @@ function Form() {
   const [newTask, setNewTask] = useState();
   const [newText, setNewText] = useState("");
 
-  const [tasks, setTasks] = useState([
-    {
-      id: uuidv4(),
-      name: "Estudar React",
-      isDone: true,
-    },
-    {
-      id: uuidv4(),
-      name: "Pular corda",
-      isDone: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   function handleCreateNewTask() {
     event.preventDefault();
@@ -34,6 +23,15 @@ function Form() {
       name: newText,
       isDone: false,
     });
+  }
+
+  function deleteTask(taskToDelete) {
+    console.log(taskToDelete);
+    const tasksWithoutDeletedOne = tasks.filter((task) => {
+      return task.id != taskToDelete;
+    });
+
+    setTasks(tasksWithoutDeletedOne);
   }
 
   return (
@@ -77,7 +75,12 @@ function Form() {
                   <li key={task.id}>
                     <input type="checkbox" />
                     <p>{task.name}</p>
-                    <button className={style.lixeira}>
+                    <button
+                      className={style.lixeira}
+                      onClick={() => {
+                        deleteTask(task.id);
+                      }}
+                    >
                       <Trash color="var(--gray-300)" />
                     </button>
                   </li>
