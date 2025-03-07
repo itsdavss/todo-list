@@ -59,7 +59,7 @@
 
 .tarefas .titulos .titulo h3 {
   font-size: 0.9rem;
-} 
+}
 
 .tarefas .titulos .titulo span {
   background-color: var(--gray-400);
@@ -110,7 +110,7 @@
   color: var(--gray-300);
 }
 
-.itens .mensagem h4:last-child{
+.itens .mensagem h4:last-child {
   font-weight: 400;
 }
 
@@ -139,6 +139,34 @@
 }
 
 .lista li .lixeira:hover path,
-.lista li .lixeira:hover line{
+.lista li .lixeira:hover line {
   stroke: var(--danger);
+
+}
+
+/* MOBILE */
+@media (max-width: 759px) {
+  
+  .container {
+    margin: -27px 5%;
+  }
+
+  .form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form input {
+    width: 90%;
+    height: 54px;
+    text-align: center;
+  }
+
+  .form button {
+    padding: 16px;
+    width: 90px;
+    height: 52px;
+  }
 }
