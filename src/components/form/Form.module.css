@@ -144,6 +144,26 @@
 
 }
 
+p.riscado {
+  text-decoration: line-through;
+  color: var(--gray-300)!important;
+}
+
+input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  appearance: none; /* Remove o estilo padrão do navegador */
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--purple-dark);
+  border-color: var(--purple-dark);
+}
+
 /* MOBILE */
 @media (max-width: 759px) {
   

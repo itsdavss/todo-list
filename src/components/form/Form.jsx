@@ -36,14 +36,14 @@ function Form() {
   function checkTask(taskToCheck) {
     const updatedCheckTasks = tasks.map((task) => {
       if (task.id == taskToCheck) {
-        return { ...task, isDone: !task.isDone};
+        return { ...task, isDone: !task.isDone };
       }
       return task
     });
     setTasks(updatedCheckTasks);
   }
 
-  const doneTasks = tasks.filter((task=> {
+  const doneTasks = tasks.filter((task => {
     return task.isDone == true
   }))
 
@@ -99,7 +99,7 @@ function Form() {
                         checkTask(task.id);
                       }}
                     />
-                    <p>{task.name}</p>
+                    <p className={task.isDone ? style.riscado : ''}>{task.name}</p>
                     <button
                       className={style.lixeira}
                       onClick={() => {
