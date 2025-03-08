@@ -138,10 +138,19 @@
   color: var(--gray-100);
 }
 
+.lista li .lixeira{ 
+  display: flex;
+  padding: 5px;
+  border-radius: 4px;
+}
+
 .lista li .lixeira:hover path,
 .lista li .lixeira:hover line {
   stroke: var(--danger);
+}
 
+.lista li .lixeira:hover {
+  background-color: var(--gray-400);
 }
 
 p.riscado {
@@ -159,9 +168,18 @@ input[type="checkbox"] {
   transition: background-color 0.3s, border-color 0.3s;
 }
 
+input[type="checkbox"]:hover {
+  background-color: rgba(30, 111, 159, 0.2);
+}
+
 input[type="checkbox"]:checked {
   background-color: var(--purple-dark);
   border-color: var(--purple-dark);
+}
+
+input[type="checkbox"]:checked:hover {
+  background-color: var(--purple);
+  border-color: var(--purple);
 }
 
 /* MOBILE */
