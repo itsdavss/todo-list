@@ -4,18 +4,26 @@ import { PlusCircle, Notepad, Trash } from "phosphor-react";
 import { v4 as uuidv4 } from "uuid";
 
 function Form() {
-  const [newTask, setNewTask] = useState();
-  const [newText, setNewText] = useState("");
 
-  const [tasks, setTasks] = useState([]);
-
-  function handleCreateNewTask(event) {
-    event.preventDefault();
-    setTasks([...tasks, newTask]);
-    setNewText("");
+  interface Task {
+    id: string;
+    name: string;
+    isDone: boolean;
   }
 
-  function handleInput(event) {
+  const [newTask, setNewTask] = useState<Task | null>(null);
+  const [newText, setNewText] = useState<string>("");
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (newTask) {
+      setTasks([...tasks, newTask]);
+      setNewText("");
+    }
+  }
+
+  function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
     setNewText(event.target.value);
 
     setNewTask({
@@ -25,7 +33,7 @@ function Form() {
     });
   }
 
-  function deleteTask(taskToDelete) {
+  function deleteTask(taskToDelete: string) {
     const tasksWithoutDeletedOne = tasks.filter((task) => {
       return task.id != taskToDelete;
     });
@@ -33,7 +41,7 @@ function Form() {
     setTasks(tasksWithoutDeletedOne);
   }
 
-  function checkTask(taskToCheck) {
+  function checkTask(taskToCheck: string) {
     const updatedCheckTasks = tasks.map((task) => {
       if (task.id == taskToCheck) {
         return { ...task, isDone: !task.isDone };
@@ -90,7 +98,7 @@ function Form() {
             </div>
           ) : (
             <ul className={style.lista}>
-              {tasks.map((task) => {
+              {tasks.map((task: Task) => {
                 return (
                   <li key={task.id}>
                     <input
