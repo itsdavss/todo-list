@@ -125,6 +125,7 @@
 .lista li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--gray-500);
   width: 100%;
   border-radius: 8px;
